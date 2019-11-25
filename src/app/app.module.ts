@@ -19,7 +19,6 @@ import { MyOrderComponent } from './my-order/my-order.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
-import { from } from 'rxjs';
 import { AuthService } from './auth.service';
 import { AuthGuard as AuthGuard } from './auth-guard.service';
 import { UserService } from './user.service';
@@ -29,6 +28,8 @@ import { CategoryService } from './category.service';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './product.service';
 import { CustomFormsModule } from 'ng2-validation';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DataTableModule } from 'angular7-data-table';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { CustomFormsModule } from 'ng2-validation';
     NgbModule,
     FormsModule,
     CustomFormsModule,
+    DataTableModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'products', component: ProductsComponent },
@@ -69,7 +71,8 @@ import { CustomFormsModule } from 'ng2-validation';
       { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard] },
 
-    ])
+    ]),
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,
